@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.opera.OperaDriver;
 
 public class GenericMethods {
     public static WebDriver driver;
@@ -29,6 +30,12 @@ public class GenericMethods {
                 //logic for Edge
                 WebDriverManager.edgedriver().setup();
                 driver=new EdgeDriver();
+                break;
+
+            case "OPERA":
+                //logic for Opera
+                WebDriverManager.operadriver().setup();
+                driver=new OperaDriver();
                 break;
 
             default:
