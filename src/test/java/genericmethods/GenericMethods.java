@@ -10,6 +10,14 @@ import org.openqa.selenium.opera.OperaDriver;
 public class GenericMethods {
     public static WebDriver driver;
 
+    /**
+     * @Method name: launchBrowser
+     * @param browserType,url
+     * @Purpose: This method will launch the browser gievn by the user
+     * @Return Type: NA
+     */
+
+
     public void launchBrowser(String browserType, String url){
 
         switch(browserType.toUpperCase()){
