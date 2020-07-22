@@ -13,6 +13,11 @@ public class WebTables {
         GenericMethods genericMethods=new GenericMethods();
         genericMethods.launchBrowser("Opera","https://money.rediff.com/gainers/bse/daily/groupa?src=gain_lose");
 
+        WebElement table=GenericMethods.driver.findElement(By.xpath("//th[text()='Company']/ancestor::table"));
+
+        //Explicit wait
+        genericMethods.waitForElementVisible(table,20);
+
         String rowXpath="//th[text()='Company']/ancestor::table//tr";
         List<WebElement> rowCount= GenericMethods.driver.findElements(By.xpath(rowXpath));
 

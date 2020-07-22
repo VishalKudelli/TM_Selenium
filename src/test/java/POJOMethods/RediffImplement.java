@@ -21,7 +21,7 @@ public class RediffImplement {
         String rowXpath = "//th[text()='Company']/ancestor::table//tr";
         List<WebElement> rowCount = GenericMethods.driver.findElements(By.xpath(rowXpath));
 
-        map.put(rowXpath,new RediffPOJO("Axis Bank Ltd.",));
+        //map.put(rowXpath,new RediffPOJO("Axis Bank Ltd.",));
 
 //        for (int r = 0; r <= rowCount.size() - 1; r++) {
 //            String colXpath = rowXpath + "[" + (r + 1) + "]/td";

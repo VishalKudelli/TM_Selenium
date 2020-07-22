@@ -10,11 +10,15 @@ public class HandlingFrames {
         GenericMethods genericMethods = new GenericMethods();
 
         genericMethods.launchBrowser("opera", "https://www.timesjobs.com/");
-Thread.sleep(10000);
+//Thread.sleep(10000);
+
         //Using Implicit wait
-        //GenericMethods.driver.manage().timeouts().implicitlyWait(35, TimeUnit.SECONDS);
+        //GenericMethods.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
 
         WebElement iframe = GenericMethods.driver.findElement(By.xpath("(//iframe)[4]"));
+//Explicit wait
+        genericMethods.waitForElementVisible(iframe,30);
 
         GenericMethods.driver.switchTo().frame(iframe);
 
