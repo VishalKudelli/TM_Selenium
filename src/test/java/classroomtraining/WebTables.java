@@ -15,6 +15,9 @@ public class WebTables {
 
         WebElement table=GenericMethods.driver.findElement(By.xpath("//th[text()='Company']/ancestor::table"));
 
+        //Implicit Wait
+       // GenericMethods.driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
+
         //Explicit wait
         genericMethods.waitForElementVisible(table,20);
 

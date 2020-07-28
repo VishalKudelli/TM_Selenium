@@ -1,0 +1,6 @@
+ControlFocus("Open","","Edit1")
+WinWait(5000)
+ControlSetText("Open","","Edit1",$Cmdline[1])
+ControlFocus("Open","","Button1")
+WinWait(5000)
+ControlClick("Open","","Button1")

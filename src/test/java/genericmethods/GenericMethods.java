@@ -11,6 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -61,6 +62,73 @@ public class GenericMethods {
         driver.manage().window().maximize();
     }
 
+    //Selecting the Drop down
+
+    /**
+     * @method selectDropDownByVisibleText
+     * @purpose selects an option from the dropdown by using the Visible Text given by the user
+     * @param element
+     * @param selectOption
+     */
+    public void selectDropDownByVisibleText(WebElement element, String selectOption){
+
+        Select option= new Select(element);
+        option.selectByVisibleText(selectOption);
+    }
+
+    /**
+     * @method selectDropDownByValue
+     * @purpose selects an option from the dropdown by using the Visible Text given by the user
+     * @param element
+     * @param selectOption
+     */
+    public void selectDropDownByValue(WebElement element, String selectOption){
+
+        Select option= new Select(element);
+        option.selectByValue(selectOption);
+    }
+
+    /**
+     * @method selectDropDownByIndex
+     * @purpose selects an option from the dropdown by using the Visible Text given by the user
+     * @param element
+     * @param selectOption
+     */
+    public void selectDropDownByIndex(WebElement element, int selectOption){
+
+        Select option= new Select(element);
+        option.selectByIndex(selectOption);
+    }
+
+    /**
+     * @method checkIfTheDropDownSelected
+     * @param element
+     * @param valueToCompare
+     * @return
+     */
+    public boolean checkIfTheDropDownSelected(WebElement element,String valueToCompare){
+
+        boolean selected=false;
+        Select dropDownOption=new Select(element);
+        String dropDownValue=dropDownOption.getFirstSelectedOption().getText();
+
+        // check if the dropdown option is not --select--. or length is 0 or string is empty
+        if(!(dropDownValue.equalsIgnoreCase(valueToCompare) || dropDownValue.length()==0 || dropDownValue.isEmpty())){
+            System.out.println("Drop Down is selected");
+            selected=true;
+        }
+        else {
+            System.out.println("Drop Down is not selected with any option");
+        }
+        return selected;
+    }
+
+
+    /**
+     * @method waitForElementVisible
+     * @param element
+     * @param seconds
+     */
     public void waitForElementVisible (WebElement element, int seconds){
 
         //Get the element from the WebElement
@@ -70,19 +138,38 @@ public class GenericMethods {
         xpath= xpath.substring(xpath.lastIndexOf(" ")+1,xpath.length()-1);
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(xpath)));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
     }
 
+    /**
+     * @method hoverAndClick
+     * @param element
+     */
     public void hoverAndClick(WebElement element){
         Actions acc=new Actions(driver);
-        acc.moveToElement(element).click(element).build().perform();
-
+        acc.moveToElement(element).click().build().perform();
     }
 
+
+    /**
+     * @method forceClick
+     * @param element
+     */
     public void forceClick(WebElement element)
     {
         JavascriptExecutor js=(JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();",element);
+    }
+
+    /**
+     * @method dragAndDrop
+     * @param element1
+     * @param element2
+     */
+    public void dragAndDrop(WebElement element1,WebElement element2){
+
+        Actions drag= new Actions(driver);
+        drag.dragAndDrop(element1, element2);
     }
 
 }

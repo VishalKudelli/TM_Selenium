@@ -4,9 +4,9 @@ public class RediffPOJO {
     private String group;
     private String prevClose;
     private String currentPrice;
-    private Integer prcChange;
+    private String prcChange;
 
-    public RediffPOJO(String group, String prevClose, String currentPrice, Integer prcChange) {
+    public RediffPOJO(String group, String prevClose, String currentPrice, String prcChange) {
         this.group = group;
         this.prevClose = prevClose;
         this.currentPrice = currentPrice;
@@ -37,11 +37,11 @@ public class RediffPOJO {
         this.currentPrice = currentPrice;
     }
 
-    public Integer getPrcChange() {
+    public String getPrcChange() {
         return prcChange;
     }
 
-    public void setPrcChange(Integer prcChange) {
+    public void setPrcChange(String prcChange) {
         this.prcChange = prcChange;
     }
 }
